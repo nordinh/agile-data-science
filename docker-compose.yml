@@ -1,0 +1,27 @@
+version: '3'
+services:
+  zookeeper:
+    image: jplock/zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      data-science-network:
+        ipv4_address: 172.16.238.10
+  kafka:
+    image: ches/kafka
+    ports:
+      - 7203:7203
+      - 9092:9092
+    networks:
+      data-science-network:
+        ipv4_address: 172.16.238.20
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=172.16.238.20
+      - ZOOKEEPER_IP=172.16.238.10
+networks:
+  data-science-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
