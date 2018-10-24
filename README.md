@@ -1,9 +1,9 @@
 # agile-data-science
 
-To start a kafka cluster with 2 nodes:
+To start a data pipeline:
 
-```docker-compose up -d --scale kafka=2```
+```docker-compose up -d```
 
-To stop the kafka cluster:
+To stop the data pipeline:
 
 ```docker-compose down```
